@@ -3,8 +3,8 @@
 
 ## Description
 The Trapped project is a simple game where the goal is to score 15 points in order to win the game.
-There are three types of obcticles falling from top of the canvas randomly: "good" ones - giving the points, "bad" ones - reducing lifes, and the third ones reducing a game area width if they are not catched.
-Player is moving left and right to avoid enemies or catch the alliances. Game finish when: the player socores 15 poins - win, runs out of lifes or trapped between walls - lose.
+There are three types of obsticles falling from the top of the canvas (randomly): "good" ones - giving the points, "bad" ones - reducing lifes, and the third ones reducing a game area width if they are not catched.
+Player is moving left and right to avoid enemies or catch the alliances. Game finishes when: the player socores 15 poins - win, runs out of lifes or trapped between walls - lose.
 
 
 ## MVP (DOM - CANVAS)
@@ -27,12 +27,12 @@ CANVAS - The MVP would be the easiest version of the game: a player with one kin
 
 ## Data structure
 Main.js
-- - buildSplash();
-- - destroySplash();
-- - buildGameScreen();
-- - destroyGameScreen();
-- - buildGameOverScreen();
-- - buildWinScreen();
+- buildSplash();
+- destroySplash();
+- buildGameScreen();
+- destroyGameScreen();
+- buildGameOverScreen();
+- buildWinScreen();
 
 
 game.js
