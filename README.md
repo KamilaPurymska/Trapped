@@ -37,6 +37,7 @@ Main.js
 
 game.js
 
+- score
 - start(){
     - buildDOM;
     - getCanvasCotext;
@@ -49,17 +50,19 @@ game.js
 - drawAll();
 - finishGame();
 - gameOverCallback();
-- chechCollisation();
+- checkCollision();
 
 
 player.js
 
 - update();
 - draw();
+- setDirection()
 - x;
 - y;
 - size;
-- life;
+- direction
+- speed
 - checkCollisationsWithObsticles
 
 
@@ -70,7 +73,6 @@ obsticles.js
 - x
 - y
 - size
-- type
 
 
 
@@ -107,18 +109,19 @@ Definition of the different states and their transition (transition functions)
 - Main - GameOver RESTART
 - Main - removeGameOver
 - Game - addEventListener
+- Game - loop
+- Game - clear
 - Game - create player
 - Player - create
 - Player - directions
-- Game - loop
-- Game - player and enemies position
-- Game - clear
+- Player - collision with walls
 - Game - create enemies
 - Enemy - create
 - Enemy - position
+- Enemy - movement
+- Game - player and enemies position
 - Enemy - check if still on the screen
 - Game - collision + remove
-- Game - lifes
 - Game - gameOver 
 
 
