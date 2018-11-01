@@ -16,64 +16,61 @@ CANVAS - The MVP would be the easiest version of the game: a player with one kin
 <li>Three types of obsticles</li>
 <li>Third obsticle reducing the width</li>
 <li>"Item" - type of obsticle removing the third obsticle from canvas.</li>
-<li>Add points to the game screen</li>
 <li>Lifes in the game screen</li>
 <li>Third screen "win screen"</li>
 <li>Pause</li>
 <li>Music</li>
 <li>Design</li>
-<li>Mobile version</li>
 <li>Poins result on the "win screen"</li>
 
 
 
 ## Data structure
 Main.js
-
-buildSplash();
-destroySplash();
-buildGameScreen();
-destroyGameScreen();
-buildGameOverScreen();
-buildWinScreen();
+- - buildSplash();
+- - destroySplash();
+- - buildGameScreen();
+- - destroyGameScreen();
+- - buildGameOverScreen();
+- - buildWinScreen();
 
 
 game.js
 
-start(){
-    buildDOM;
-    getCanvasCotext;
-    startLoop();
+- start(){
+    - buildDOM;
+    - getCanvasCotext;
+    - startLoop();
 }
-startLoop()
-    loop();
-updateAll();
-cleanAll();
-drawAll();
-finishGame();
-gameOverCallback();
-chechCollisation();
+- startLoop()
+    - loop();
+- updateAll();
+- cleanAll();
+- drawAll();
+- finishGame();
+- gameOverCallback();
+- chechCollisation();
 
 
 player.js
 
-update();
-draw();
-x;
-y;
-size;
-life;
-checkCollisationsWithObsticles
+- update();
+- draw();
+- x;
+- y;
+- size;
+- life;
+- checkCollisationsWithObsticles
 
 
 obsticles.js
 
-update();
-draw();
-x
-y
-size
-type
+- update();
+- draw();
+- x
+- y
+- size
+- type
 
 
 
@@ -118,6 +115,7 @@ Definition of the different states and their transition (transition functions)
 - Game - clear
 - Game - create enemies
 - Enemy - create
+- Enemy - position
 - Enemy - check if still on the screen
 - Game - collision + remove
 - Game - lifes
