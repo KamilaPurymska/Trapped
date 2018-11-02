@@ -19,7 +19,7 @@ Game.prototype.start = function () {
    
     setTimeout(function () {
       this.finishGame();
-    }.bind(this),2000);
+    }.bind(this),10000);
    
    }
 
@@ -27,7 +27,7 @@ Game.prototype.start = function () {
 Game.prototype.startLoop = function(){
 
     this.player = new Player(this.canvasElement, this.initialPostionPlayer);
-    this.handelKeyDown = function (event){
+    this.handleKeyDown = function (event){
         if (event.key === 'ArrowLeft') {
             this.player.setDirection(-1)
             } else if(event.key === 'ArrowRight'){
@@ -35,7 +35,7 @@ Game.prototype.startLoop = function(){
             }
         }.bind(this)
     
-    document.addEventListener('keyDown', this.handelKeyDown);
+    document.addEventListener('keydown', this.handleKeyDown);
 
 
     var loop = function (){ 
@@ -64,7 +64,7 @@ Game.prototype.updateAll = function(){
 }
 
 Game.prototype.clearAll = function(){
-
+    this.ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
 }
 
 Game.prototype.drawAll = function(){
