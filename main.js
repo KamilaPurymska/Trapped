@@ -25,7 +25,7 @@ function buildSplash() {
   
     document.body.prepend(splashScreen);
   
-    startButton =document.querySelector('button');
+    startButton = document.querySelector('button');
     startButton.addEventListener('click', destroySplash);
 }
 buildSplash();
@@ -43,13 +43,21 @@ function buildGameScreen(){
     gameScreen = buildDOM(`
         <main>
             <p>Score: </p>
-            <canvas></canvas>
+            <canvas width="640px" height="480px"></canvas>
         </main>
     `)
-document.body.prepend(gameScreen);
-setTimeout(function() {
-    destroyGameScreen()
-  }, 5000)
+    document.body.prepend(gameScreen);
+
+    var canvasElement = document.querySelector('canvas');
+
+// create a new game
+    var game = new Game(canvasElement);
+
+// start the new games
+    game.start();
+//finish the game
+    game.onGameOverCallback(destroyGameScreen);
+
 }
 
 
