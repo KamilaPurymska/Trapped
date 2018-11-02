@@ -12,6 +12,8 @@ function buildDOM(html) {
     var splashScreen;
     var gameScreen;
     var startButton;
+    var gameOverScreen;
+    var restartButton;
   
 function buildSplash() {
     splashScreen = buildDOM(`
@@ -28,6 +30,7 @@ function buildSplash() {
 }
 buildSplash();
 
+
 function destroySplash(){
     splashScreen.remove();
     startButton.removeEventListener('click', destroySplash);
@@ -39,18 +42,48 @@ function destroySplash(){
 function buildGameScreen(){
     gameScreen = buildDOM(`
         <main>
-            <h1>me</h1>
+            <p>Score: </p>
             <canvas></canvas>
         </main>
     `)
 document.body.prepend(gameScreen);
-
+setTimeout(function() {
+    destroyGameScreen()
+  }, 5000)
 }
+
 
 function destroyGameScreen(){
     gameScreen.remove();
     buildGameOverScreen();
+    
 }
+
+
+function buildGameOverScreen(){
+    gameOverScreen = buildDOM(`
+        <main>
+            <h1>Game over</h1>
+            <button>RESTART</button>
+        </main>
+    `)
+    document.body.prepend(gameOverScreen);
+
+    restartButton = document.querySelector('button')
+    restartButton.addEventListener('click', destroyGameOverScreen)
+}
+
+function destroyGameOverScreen(){
+    gameOverScreen.remove();
+    restartButton.removeEventListener('click', destroyGameOverScreen)
+    buildGameScreen();
+}
+
+
+
+
+
+
 
 
 }

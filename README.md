@@ -102,7 +102,7 @@ Definition of the different states and their transition (transition functions)
 - Main - buildSplash
 - Main - addEventListener
 - Main - destroySplash
-- Game - buildDom
+- Main - buildDom - for game
 - Game - TimeOut test
 - Main - GameOver
 - Main - destroy Game
