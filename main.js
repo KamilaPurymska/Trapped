@@ -50,12 +50,10 @@ function buildGameScreen(){
 
     var canvasElement = document.querySelector('canvas');
 
-// create a new game
     var game = new Game(canvasElement);
 
-// start the new games
     game.start();
-//finish the game
+
     game.onGameOverCallback(destroyGameScreen);
 
 }

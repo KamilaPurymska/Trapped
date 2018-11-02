@@ -2,14 +2,17 @@
 
 function Game(canvasElement){
     this.player = null;
-    this.enemies = null;
+    this.obsticles = null;
     this.gameOver = false;
     this.canvasElement = canvasElement;
     this.initialPostionPlayer = {
         x: this.canvasElement.width / 2,
         y: this.canvasElement.height
     }
-}
+    
+        
+    }
+
 
 Game.prototype.start = function () {
 
@@ -27,13 +30,18 @@ Game.prototype.start = function () {
 Game.prototype.startLoop = function(){
 
     this.player = new Player(this.canvasElement, this.initialPostionPlayer);
+    //this.obsticles = new Obsticles(this.canvasElement, this.)
     this.handleKeyDown = function (event){
         if (event.key === 'ArrowLeft') {
             this.player.setDirection(-1)
             } else if(event.key === 'ArrowRight'){
                 this.player.setDirection(1);
             }
+            this.player.move();
         }.bind(this)
+
+    
+    
     
     document.addEventListener('keydown', this.handleKeyDown);
 
