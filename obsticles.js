@@ -17,4 +17,4 @@ Obsticle.prototype.update = function(){
 
 Obsticle.prototype.inCanvas = function(){
     //return this.y > -this.size; 
-}
+}   

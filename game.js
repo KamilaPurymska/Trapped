@@ -20,9 +20,6 @@ Game.prototype.start = function () {
    
     this.startLoop();
    
-    setTimeout(function () {
-      this.finishGame();
-    }.bind(this),10000);
    
    }
 
@@ -38,7 +35,6 @@ Game.prototype.startLoop = function(){
             } else if(event.key === 'ArrowRight'){
                 this.player.setDirection(1);
             }
-            this.player.move();
         }.bind(this)
 
     
@@ -51,6 +47,7 @@ Game.prototype.startLoop = function(){
            this.obsticles.push(new Obsticle(this.canvasElement));
         }
 
+        this.chceckCollisions();
         this.updateAll();
         this.clearAll();
         this.drawAll();
@@ -80,7 +77,7 @@ Game.prototype.updateAll = function(){
 Game.prototype.clearAll = function(){
     this.ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
     this.obsticles.filter(function(obsticle){
-        return obsticle.inCanvas();
+        return obsticle.inCanvas(); 
     })
 }
 
@@ -95,6 +92,24 @@ Game.prototype.drawAll = function(){
 Game.prototype.finishGame = function(){
     this.gameOver = true;
     this.gameOverCallback();
-   
+}
+
+Game.prototype.chceckCollisions = function(){
+    this.obsticles.forEach(function(obsticle, index) {
+        if (this.player.collisionWithObsicles(obsticle)) {
+            this.player.lifes--;
+            this.lostLifes(this.player.lifes);
+          this.obsticles.splice(index, 1);
+        
+        if(!this.player.lifes){
+            this.gameOver = true;
+            this.finishGame();
+        }
+        }
+      }.bind(this)); 
+    }
+
+Game.prototype.onLifeLost = function(callback) {
+    this.lostLifes = callback
 }
 
