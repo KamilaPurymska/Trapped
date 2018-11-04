@@ -19,15 +19,16 @@ function buildDOM(html) {
   
 function buildSplash() {
     splashScreen = buildDOM(`
-    <main>
+    <main class="spalash">
         <h1>Trapped</h1>
-        <button>Start</button>
+        <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
+        <button class="start">Start</button>
     </main>
     `)
   
     document.body.prepend(splashScreen);
   
-    startButton = document.querySelector('button');
+    startButton = document.querySelector('button.start');
     startButton.addEventListener('click', destroySplash);
 }
 buildSplash();
@@ -44,7 +45,9 @@ function destroySplash(){
 function buildGameScreen(){
     gameScreen = buildDOM(`
         <main>
+            <p>Lives: </p>
             <p class="lives">3</p>
+            <p>Points: </p>
             <p class="points">0</p>
             <canvas width="640px" height="480px"></canvas>
         </main>
