@@ -14,7 +14,7 @@ function buildDOM(html) {
     var startButton;
     var gameOverScreen;
     var restartButton;
-    var lifeElement;
+    var liveElement;
   
 function buildSplash() {
     splashScreen = buildDOM(`
@@ -43,24 +43,24 @@ function destroySplash(){
 function buildGameScreen(){
     gameScreen = buildDOM(`
         <main>
-            <p class="lifes">3</p>
+            <p class="lives">3</p>
             <canvas width="640px" height="480px"></canvas>
         </main>
     `)
     document.body.prepend(gameScreen);
 
     var canvasElement = document.querySelector('canvas');
-    lifeElement  = document.querySelector('p.lifes')
+    liveElement  = document.querySelector('p.lives')
 
     var game = new Game(canvasElement);
 
     game.start();
 
     game.onGameOverCallback(destroyGameScreen);
-    game.onLifeLost(updateLifes);
+    game.onLiveLost(updateLives);
 
-    function updateLifes(lifes) {
-        lifeElement.innerText = lifes;
+    function updateLives(lives) {
+        liveElement.innerText = lives;
     }
 
 }

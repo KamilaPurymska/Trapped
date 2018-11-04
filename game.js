@@ -3,6 +3,8 @@
 function Game(canvasElement){
     this.player = null;
     this.obsticles = [];
+    this.points = [];
+    this.score = 0;
     this.gameOver = false;
     this.canvasElement = canvasElement;
     this.initialPostionPlayer = {
@@ -28,6 +30,7 @@ Game.prototype.startLoop = function(){
 
     this.player = new Player(this.canvasElement, this.initialPostionPlayer);
     this.obsticles.push(new Obsticle(this.canvasElement))
+    this.points.push(new Points(this.canvasElement))
 
     this.handleKeyDown = function (event){
         if (event.key === 'ArrowLeft') {
@@ -46,6 +49,10 @@ Game.prototype.startLoop = function(){
        if(Math.random() > 0.97){
            this.obsticles.push(new Obsticle(this.canvasElement));
         }
+
+        if(Math.random() > 0.96){
+            this.points.push(new Points(this.canvasElement));
+         }
 
         this.chceckCollisions();
         this.updateAll();
@@ -71,6 +78,9 @@ Game.prototype.updateAll = function(){
     this.obsticles.forEach(function(obsticle){
         obsticle.update();
     })
+    this.points.forEach(function(point){
+        point.update();
+    })
 
 }
 
@@ -79,12 +89,18 @@ Game.prototype.clearAll = function(){
     this.obsticles.filter(function(obsticle){
         return obsticle.inCanvas(); 
     })
+    this.points.filter(function(point){
+        return point.inCanvas(); 
+    })
 }
 
 Game.prototype.drawAll = function(){
     this.player.draw();
     this.obsticles.forEach(function(obsticle){
         obsticle.draw();
+    })
+    this.points.forEach(function(point){
+        point.draw();
     })
 
 }
@@ -97,19 +113,20 @@ Game.prototype.finishGame = function(){
 Game.prototype.chceckCollisions = function(){
     this.obsticles.forEach(function(obsticle, index) {
         if (this.player.collisionWithObsicles(obsticle)) {
-            this.player.lifes--;
-            this.lostLifes(this.player.lifes);
+            this.player.lives--;
+            this.lostLives(this.player.lives);
           this.obsticles.splice(index, 1);
         
-        if(!this.player.lifes){
+        if(!this.player.lives){
             this.gameOver = true;
             this.finishGame();
         }
         }
       }.bind(this)); 
+      
     }
 
-Game.prototype.onLifeLost = function(callback) {
-    this.lostLifes = callback
+Game.prototype.onLiveLost = function(callback) {
+    this.lostLives = callback
 }
 
