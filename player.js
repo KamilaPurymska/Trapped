@@ -43,4 +43,13 @@ function Player(canvasElement, initialPostionPlayer){
         return  collisionTop && collisionRight && collisionLeft && collisionBottom
     }
 
+    Player.prototype.collisionWithPoints = function(point){
+        var collisionTop = point.y < this.y + this.size;
+        var collisionBottom = point.y + point.size > this.y;
+        var collisionRight = point.x < this.x + this.size ;
+        var collisionLeft = point.x + point.size  > this.x;
+
+        return  collisionTop && collisionRight && collisionLeft && collisionBottom
+    }
+
     

@@ -15,6 +15,7 @@ function buildDOM(html) {
     var gameOverScreen;
     var restartButton;
     var liveElement;
+    var pointsElement;
   
 function buildSplash() {
     splashScreen = buildDOM(`
@@ -44,6 +45,7 @@ function buildGameScreen(){
     gameScreen = buildDOM(`
         <main>
             <p class="lives">3</p>
+            <p class="points">0</p>
             <canvas width="640px" height="480px"></canvas>
         </main>
     `)
@@ -51,6 +53,7 @@ function buildGameScreen(){
 
     var canvasElement = document.querySelector('canvas');
     liveElement  = document.querySelector('p.lives')
+    pointsElement = document.querySelector('p.points')
 
     var game = new Game(canvasElement);
 
@@ -58,9 +61,14 @@ function buildGameScreen(){
 
     game.onGameOverCallback(destroyGameScreen);
     game.onLiveLost(updateLives);
+    game.onPointsGained(updatePoints);
 
     function updateLives(lives) {
         liveElement.innerText = lives;
+    }
+
+    function updatePoints(points){
+        pointsElement.innerText = points;
     }
 
 }

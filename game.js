@@ -123,10 +123,22 @@ Game.prototype.chceckCollisions = function(){
         }
         }
       }.bind(this)); 
-      
+
+      this.points.forEach(function(point, index){
+          if(this.player.collisionWithPoints(point)){
+            this.score++;
+            this.points.splice(index, 1);
+            this.pointsGained(this.score);
+          }
+      }.bind(this));
+
     }
 
 Game.prototype.onLiveLost = function(callback) {
     this.lostLives = callback
+}
+
+Game.prototype.onPointsGained = function(callback){
+    this.pointsGained = callback;
 }
 
