@@ -46,7 +46,7 @@ Game.prototype.startLoop = function(){
 
     var loop = function (){ 
         
-       if(Math.random() > 0.97){
+       if(Math.random() > 0.99){
            this.obsticles.push(new Obsticle(this.canvasElement));
         }
 
@@ -115,12 +115,12 @@ Game.prototype.chceckCollisions = function(){
         if (this.player.collisionWithObsicles(obsticle)) {
             this.player.lives--;
             this.lostLives(this.player.lives);
-          this.obsticles.splice(index, 1);
+            this.obsticles.splice(index, 1);
         
-        if(!this.player.lives){
-            this.gameOver = true;
-            this.finishGame();
-        }
+            if(!this.player.lives){
+                this.gameOver = true;
+                this.finishGame();
+            }
         }
       }.bind(this)); 
 

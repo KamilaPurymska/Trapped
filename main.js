@@ -45,11 +45,18 @@ function destroySplash(){
 function buildGameScreen(){
     gameScreen = buildDOM(`
         <main>
-            <p>Lives: </p>
-            <p class="lives">3</p>
-            <p>Points: </p>
-            <p class="points">0</p>
-            <canvas width="640px" height="480px"></canvas>
+            <div class="wrapper">
+                <div class="livesSec">
+                    <p class="livesTe">Lives: </p>
+                    <p class="lives">3</p>
+                </div>
+                <div class="pointSec">
+                    <p class="pointsTe">Points: </p>
+                    <p class="points">0</p>
+                </div>
+                <canvas width="640px" height="480px">
+                </canvas>
+            </wrapper>
         </main>
     `)
     document.body.prepend(gameScreen);
