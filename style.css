@@ -16,7 +16,7 @@ html {
 
   .wrapper{
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 15% 70% 15%;
     grid-template-areas:
       ". . ." 
       "lives canva poit";
@@ -84,9 +84,10 @@ html {
 
   p.lives, p.livesTe, p.points, p.pointsTe  {
     color: white;
-    font-size: 40px;
+    font-size: 50px;
     font-family: 'Permanent Marker', cursive;
-    text-align: center
+    text-align: center;
+    
   }
   
   
