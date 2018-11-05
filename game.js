@@ -70,6 +70,7 @@ Game.prototype.startLoop = function(){
 
 Game.prototype.onGameOverCallback = function(callback){
     this.gameOverCallback = callback;
+    
 }
 
 
