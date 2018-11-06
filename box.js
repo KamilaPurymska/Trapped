@@ -1,23 +1,23 @@
 'use strict'
-function Obsticle(canvasElement, obsticleSpeed){
+
+function Box(canvasElement){
     this.canvasElement = canvasElement;
     this.ctx = this.canvasElement.getContext('2d');
-    this.size = 50;
-    this.y = -50;
-    this.speed = obsticleSpeed;
+    this.size = 60;
+    this.y = this.canvasElement.height -this.size;
     this.image = new Image();
-    this.image.src = './images/bomb3.png';
+    this.image.src = './images/box.png';
     this.x = Math.floor(Math.random() * this.canvasElement.width);
 }
 
-Obsticle.prototype.draw = function(){
+Box.prototype.draw = function(){
     this.ctx.drawImage(this.image, this.x, this.y, this.size, this.size)
+}   
+
+Box.prototype.update = function(){
+    
 }
 
-Obsticle.prototype.update = function(){
-    this.y += this.speed;
-}
-
-Obsticle.prototype.inCanvas = function(){
+Box.prototype.inCanvas = function(){
     return this.y > -this.size; 
 }   

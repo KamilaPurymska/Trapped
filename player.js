@@ -11,7 +11,6 @@ function Player(canvasElement, initialPostionPlayer){
     this.ctx = this.canvasElement.getContext('2d');
     this.image = new Image();
     this.image.src = './images/penguin.png';
-   // this.chooseImage = this.getImage();
 }
 
     Player.prototype.setDirection = function(direction){

@@ -4,9 +4,18 @@ function Game(canvasElement){
     this.player = null;
     this.obsticles = [];
     this.points = [];
+    this.box =[];
     this.score = 0;
     this.gameOver = false;
+    this.level = 1;
     this.canvasElement = canvasElement;
+
+    this.obsticleRate;
+    this.obsticleSpeed;
+    this.pointsRate;
+    this.poitsSpeed; 
+    this.boxRate;
+
     this.initialPostionPlayer = {
         x: this.canvasElement.width / 2,
         y: this.canvasElement.height
@@ -21,16 +30,21 @@ Game.prototype.start = function () {
     this.ctx = this.canvasElement.getContext('2d');
    
     this.startLoop();
+    
+    setTimeout(function () {
+        this.level++; 
+
+    }.bind(this), 5000);
    
-   
-   }
+}
 
 
 Game.prototype.startLoop = function(){
 
     this.player = new Player(this.canvasElement, this.initialPostionPlayer);
-    this.obsticles.push(new Obsticle(this.canvasElement))
-    this.points.push(new Points(this.canvasElement))
+    this.obsticles.push(new Obsticle(this.canvasElement, this.obsticleSpeed))
+    this.points.push(new Points(this.canvasElement, this.poitsSpeed))
+   // this.box.push(new Box(this.canvasElement))
 
     this.handleKeyDown = function (event){
         if (event.key === 'ArrowLeft') {
@@ -46,22 +60,31 @@ Game.prototype.startLoop = function(){
 
     var loop = function (){ 
         
-       if(Math.random() > 0.99){
-           this.obsticles.push(new Obsticle(this.canvasElement));
+       if(Math.random() > this.obsticleRate){
+           this.obsticles.push(new Obsticle(this.canvasElement, this.obsticleSpeed));
         }
 
-        if(Math.random() > 0.96){
-            this.points.push(new Points(this.canvasElement));
+        if(Math.random() > this.pointsRate){
+            this.points.push(new Points(this.canvasElement, this.poitsSpeed));
+         }
+
+        if (this.level === 2){ 
+            if(Math.random() > this.boxRate){
+                this.box.push(new Box(this.canvasElement));
+            }
          }
 
         this.chceckCollisions();
         this.updateAll();
         this.clearAll();
         this.drawAll();
+        this.checkLevels();
+        
         
         if (!this.gameOver) {
             requestAnimationFrame(loop);
           }
+
     
     }.bind(this)
     
@@ -70,7 +93,7 @@ Game.prototype.startLoop = function(){
 
 Game.prototype.onGameOverCallback = function(callback){
     this.gameOverCallback = callback;
-    
+
 }
 
 
@@ -82,6 +105,7 @@ Game.prototype.updateAll = function(){
     this.points.forEach(function(point){
         point.update();
     })
+ 
 
 }
 
@@ -93,6 +117,9 @@ Game.prototype.clearAll = function(){
     this.points.filter(function(point){
         return point.inCanvas(); 
     })
+    this.box.filter(function(box){
+        return box.inCanvas(); 
+    })
 }
 
 Game.prototype.drawAll = function(){
@@ -102,6 +129,9 @@ Game.prototype.drawAll = function(){
     })
     this.points.forEach(function(point){
         point.draw();
+    })
+    this.box.forEach(function(box){
+        box.draw();
     })
 
 }
@@ -143,3 +173,20 @@ Game.prototype.onPointsGained = function(callback){
     this.pointsGained = callback;
 }
 
+Game.prototype.checkLevels = function(){
+    if (this.level === 1){
+        this.poitsSpeed = 5;
+        this.obsticleSpeed = 4;
+
+        this.pointsRate = 0.985;
+        this.obsticleRate = 0.99;
+
+    }else if (this.level === 2){
+        this.poitsSpeed = 7;
+        this.obsticleSpeed = 6;
+
+        this.pointsRate = 0.975;
+        this.obsticleRate = 0.969;
+        this.boxRate = 0.99
+    }
+}

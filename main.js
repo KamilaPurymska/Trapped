@@ -19,10 +19,12 @@ function buildDOM(html) {
   
 function buildSplash() {
     splashScreen = buildDOM(`
-    <main class="spalash">
-        <h1>Trapped</h1>
-        <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
-        <button class="start">Start</button>
+    <main class="mainsplash">
+        <div class="splash">
+            <h1>Trapped</h1>
+            <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
+            <button class="start">Start</button>
+        </div>
     </main>
     `)
   
@@ -56,7 +58,7 @@ function buildGameScreen(){
                 </div>
                 <canvas width="640px" height="480px">
                 </canvas>
-            </wrapper>
+            </div>
         </main>
     `)
     document.body.prepend(gameScreen);
@@ -93,9 +95,11 @@ function destroyGameScreen(){
 
 function buildGameOverScreen(){
     gameOverScreen = buildDOM(`
-        <main>
-            <h1>Game over</h1>
-            <button>RESTART</button>
+        <main class="oversplash">
+            <div class="over">
+                <h1>Game over</h1>
+                <button>RESTART</button>
+            </div>
         </main>
     `)
     document.body.prepend(gameOverScreen);
