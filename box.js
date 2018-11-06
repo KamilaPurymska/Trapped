@@ -7,7 +7,7 @@ function Box(canvasElement){
     this.y = this.canvasElement.height -this.size;
     this.image = new Image();
     this.image.src = './images/box.png';
-    this.x = Math.floor(Math.random() * this.canvasElement.width);
+    this.x = Math.floor(Math.random() * this.canvasElement.width - this.size);
 }
 
 Box.prototype.draw = function(){

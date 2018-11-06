@@ -60,6 +60,9 @@ function Player(canvasElement, initialPostionPlayer){
         return  collisionTop && collisionRight && collisionLeft
     }
 
-   /* Player.prototype.getImage = function(){
-        return this.image;
-    }   */
+   Player.prototype.collisionWithBox = function(box){
+        var collisionRight = box.x < this.x + this.size;
+        var collisionLeft = box.x + box.size  > this.x;
+
+        return collisionRight && collisionLeft
+   }

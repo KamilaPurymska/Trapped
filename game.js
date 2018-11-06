@@ -30,21 +30,15 @@ Game.prototype.start = function () {
     this.ctx = this.canvasElement.getContext('2d');
    
     this.startLoop();
-    
-    setTimeout(function () {
-        this.level++; 
-
-    }.bind(this), 5000);
-   
 }
 
 
 Game.prototype.startLoop = function(){
 
     this.player = new Player(this.canvasElement, this.initialPostionPlayer);
-    this.obsticles.push(new Obsticle(this.canvasElement, this.obsticleSpeed))
-    this.points.push(new Points(this.canvasElement, this.poitsSpeed))
-   // this.box.push(new Box(this.canvasElement))
+    //this.obsticles.push(new Obsticle(this.canvasElement, this.obsticleSpeed))
+    //this.points.push(new Points(this.canvasElement, this.poitsSpeed))
+    //this.box.push(new Box(this.canvasElement))
 
     this.handleKeyDown = function (event){
         if (event.key === 'ArrowLeft') {
@@ -57,6 +51,11 @@ Game.prototype.startLoop = function(){
     
     document.addEventListener('keydown', this.handleKeyDown);
 
+    var intervalId = setInterval(function () {
+        this.level++; 
+        console.log(this.level)
+
+    }.bind(this), 5000);
 
     var loop = function (){ 
         
@@ -68,7 +67,7 @@ Game.prototype.startLoop = function(){
             this.points.push(new Points(this.canvasElement, this.poitsSpeed));
          }
 
-        if (this.level === 2){ 
+        if (this.level === 2 || this.level === 3){ 
             if(Math.random() > this.boxRate){
                 this.box.push(new Box(this.canvasElement));
             }
@@ -163,6 +162,20 @@ Game.prototype.chceckCollisions = function(){
           }
       }.bind(this));
 
+     this.box.forEach(function(box, index){
+          if(this.player.collisionWithBox(box)){
+            this.gameOver = true;
+            this.finishGame();
+          } else {
+            console.log('not collision')
+            setTimeout(function () {
+                this.lives++; 
+                this.lostLives(this.player.lives);
+                this.box.splice(index, 1);
+            }.bind(this), 2000)
+          }
+      }.bind(this))
+
     }
 
 Game.prototype.onLiveLost = function(callback) {
@@ -175,18 +188,25 @@ Game.prototype.onPointsGained = function(callback){
 
 Game.prototype.checkLevels = function(){
     if (this.level === 1){
-        this.poitsSpeed = 5;
-        this.obsticleSpeed = 4;
+        this.poitsSpeed = 4;
+        this.obsticleSpeed = 3;
 
         this.pointsRate = 0.985;
-        this.obsticleRate = 0.99;
+        this.obsticleRate = 0.992;
 
     }else if (this.level === 2){
         this.poitsSpeed = 7;
-        this.obsticleSpeed = 6;
+        this.obsticleSpeed = 7;
 
         this.pointsRate = 0.975;
-        this.obsticleRate = 0.969;
+        this.obsticleRate = 0.98;
         this.boxRate = 0.99
+    } else if (this.level === 3){
+        this.poitsSpeed = 20;
+        this.obsticleSpeed = 7;
+
+        this.pointsRate = 0.975;
+        this.obsticleRate = 0.98;
+        this.boxRate = 0.992
     }
 }
