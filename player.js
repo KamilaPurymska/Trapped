@@ -5,7 +5,7 @@ function Player(canvasElement, initialPostionPlayer){
     this.y = initialPostionPlayer.y;
     this.size = 100;
     this.speed = 5;
-    this.lives = 3;
+    this.lives = 10;
     this.direction = 0; 
     this.canvasElement = canvasElement;
     this.ctx = this.canvasElement.getContext('2d');
@@ -62,7 +62,8 @@ function Player(canvasElement, initialPostionPlayer){
 
    Player.prototype.collisionWithBox = function(box){
         var collisionRight = box.x < this.x + this.size;
+        var collisionTop = box.y + box.size > this.y - this.size;
         var collisionLeft = box.x + box.size  > this.x;
 
-        return collisionRight && collisionLeft
+        return collisionRight && collisionLeft && collisionTop
    }

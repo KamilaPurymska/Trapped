@@ -2,12 +2,12 @@
 function Obsticle(canvasElement, obsticleSpeed){
     this.canvasElement = canvasElement;
     this.ctx = this.canvasElement.getContext('2d');
-    this.size = 50;
+    this.size = 35;
     this.y = -50;
     this.speed = obsticleSpeed;
     this.image = new Image();
     this.image.src = './images/bomb3.png';
-    this.x = Math.floor(Math.random() * this.canvasElement.width);
+    this.x = Math.floor(Math.random() * (this.canvasElement.width-this.size))+this.size;
 }
 
 Obsticle.prototype.draw = function(){

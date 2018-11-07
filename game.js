@@ -9,12 +9,14 @@ function Game(canvasElement){
     this.gameOver = false;
     this.level = 1;
     this.canvasElement = canvasElement;
+    this.message = '';
 
     this.obsticleRate;
     this.obsticleSpeed;
     this.pointsRate;
     this.poitsSpeed; 
     this.boxRate;
+    this.boxSpeed;
 
     this.initialPostionPlayer = {
         x: this.canvasElement.width / 2,
@@ -38,7 +40,7 @@ Game.prototype.startLoop = function(){
     this.player = new Player(this.canvasElement, this.initialPostionPlayer);
     //this.obsticles.push(new Obsticle(this.canvasElement, this.obsticleSpeed))
     //this.points.push(new Points(this.canvasElement, this.poitsSpeed))
-    //this.box.push(new Box(this.canvasElement))
+    //this.box.push(new Box(this.canvasElement, this.speedBox))
 
     this.handleKeyDown = function (event){
         if (event.key === 'ArrowLeft') {
@@ -47,15 +49,19 @@ Game.prototype.startLoop = function(){
                 this.player.setDirection(1);
             }
         }.bind(this)
-
     
     document.addEventListener('keydown', this.handleKeyDown);
 
     var intervalId = setInterval(function () {
         this.level++; 
-        console.log(this.level)
+        this.message = new Message(this.canvasElement, 'Level ' + this.level)
+        
+        setTimeout(function() {
+            this.message = null;
+        }.bind(this), 2000)
 
-    }.bind(this), 5000);
+    }.bind(this), 10000);
+    
 
     var loop = function (){ 
         
@@ -67,9 +73,9 @@ Game.prototype.startLoop = function(){
             this.points.push(new Points(this.canvasElement, this.poitsSpeed));
          }
 
-        if (this.level === 2 || this.level === 3){ 
+        if (this.level === 2 || this.level === 3 || this.level === 4 || this.level === 5){ 
             if(Math.random() > this.boxRate){
-                this.box.push(new Box(this.canvasElement));
+                this.box.push(new Box(this.canvasElement, this.boxSpeed));
             }
          }
 
@@ -79,6 +85,10 @@ Game.prototype.startLoop = function(){
         this.drawAll();
         this.checkLevels();
         
+        if(this.level >=5) {
+            clearInterval(intervalId);
+            this.finishGame();
+        }
         
         if (!this.gameOver) {
             requestAnimationFrame(loop);
@@ -103,6 +113,9 @@ Game.prototype.updateAll = function(){
     })
     this.points.forEach(function(point){
         point.update();
+    })
+    this.box.forEach(function(box){
+        box.update();
     })
  
 
@@ -132,6 +145,10 @@ Game.prototype.drawAll = function(){
     this.box.forEach(function(box){
         box.draw();
     })
+    if (this.message) {
+        this.message.draw()
+
+    }
 
 }
 
@@ -169,10 +186,8 @@ Game.prototype.chceckCollisions = function(){
           } else {
             console.log('not collision')
             setTimeout(function () {
-                this.lives++; 
-                this.lostLives(this.player.lives);
                 this.box.splice(index, 1);
-            }.bind(this), 2000)
+            }.bind(this), 3500)
           }
       }.bind(this))
 
@@ -191,22 +206,40 @@ Game.prototype.checkLevels = function(){
         this.poitsSpeed = 4;
         this.obsticleSpeed = 3;
 
-        this.pointsRate = 0.985;
-        this.obsticleRate = 0.992;
+        this.pointsRate = 0.988;
+        this.obsticleRate = 0.985;
 
     }else if (this.level === 2){
-        this.poitsSpeed = 7;
+        this.poitsSpeed = 6;
         this.obsticleSpeed = 7;
+        this.boxSpeed = 9;
 
-        this.pointsRate = 0.975;
-        this.obsticleRate = 0.98;
-        this.boxRate = 0.99
+        this.pointsRate = 0.985;
+        this.obsticleRate = 0.982;
+        this.boxRate = 0.9975;
     } else if (this.level === 3){
-        this.poitsSpeed = 20;
-        this.obsticleSpeed = 7;
+        this.poitsSpeed = 8;
+        this.obsticleSpeed = 8;
+        this.boxSpeed = 10;
 
-        this.pointsRate = 0.975;
+        this.pointsRate = 0.985;
         this.obsticleRate = 0.98;
-        this.boxRate = 0.992
-    }
+        this.boxRate = 0.997;
+    } else if (this.level === 4){
+        this.poitsSpeed = 10;
+        this.obsticleSpeed = 8;
+        this.boxSpeed = 10;
+
+        this.pointsRate = 0.98;
+        this.obsticleRate = 0.97;
+        this.boxRate = 0.997;
+    }else if (this.level === 5){
+        this.poitsSpeed = 10;
+        this.obsticleSpeed = 8;
+        this.boxSpeed = 10;
+
+        this.pointsRate = 0.985;
+        this.obsticleRate = 0.97;
+        this.boxRate = 0.997;
+}
 }

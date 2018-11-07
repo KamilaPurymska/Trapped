@@ -2,13 +2,13 @@
 function Points(canvasElement, poitsSpeed){
     this.canvasElement = canvasElement;
     this.ctx = this.canvasElement.getContext('2d');
-    this.size = 40;
+    this.size = 37;
     this.y = -50;
     this.speed = poitsSpeed
     this.image = new Image();
     this.pointsImages = ["./images/cocstail.png" , "./images/coctail2.png", "./images/coctail3.png"]
     this.image.src = this.randomImage();
-    this.x = Math.floor(Math.random() * this.canvasElement.width);
+    this.x = Math.floor(Math.random() * (this.canvasElement.width-this.size)) + this.size;
 }
 
 Points.prototype.draw = function(){
