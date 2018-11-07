@@ -16,12 +16,20 @@ div.splash, div.over{
   margin: 0 auto;
 }
 
-.mainsplash, .oversplash{
-    background-image: url('https://i.kym-cdn.com/photos/images/original/001/017/674/cd0.gif');
+.mainsplash{
+    background-image: url('http://staging.altoastral.com.br/wp-content/uploads/2016/08/melman-girafa-madasgascar.gif');
     background-size: cover;
     background-repeat: no-repeat;
     height: 800px;
+    background-position: center;
    
+}
+
+.oversplash {
+  background-image: url('https://i.kym-cdn.com/photos/images/original/001/017/674/cd0.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 800px;
 }
 
   .wrapper{
@@ -63,21 +71,37 @@ div.splash, div.over{
     font-family: 'Permanent Marker', cursive;
     color: white;
     text-align: center;
-    font-size: 95px;
+    font-size: 100px;
     letter-spacing: 0.7rem;
   }
 
-  button{
+  button.over{
     align-self: center;
-    padding: 15px 50px 15px 50px;
+    padding: 15px 80px 15px 80px;
     font-size: 30px;
-    border-radius: 20px;
+    border-radius: 15px;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.7rem;
     display:block;
     margin: 0 auto;
-    box-shadow: 8px 8px 2px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.5);
+  }
 
+
+  .start{
+    align-self: center;
+    padding: 15px 80px 15px 80px;
+    font-size: 30px;
+    border: none;
+    border-top: 2px solid white;
+    /*border-radius: 15px;*/
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.7rem;
+    display:block;
+    margin: 0 auto;
+    background-color: rgba(253, 253, 253, 0);
+    color:white;
+    /*box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.5);*/
   }
   @keyframes jump {
     0%   {

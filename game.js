@@ -31,6 +31,10 @@ Game.prototype.start = function () {
 
     this.ctx = this.canvasElement.getContext('2d');
    
+
+    
+
+
     this.startLoop();
 }
 
@@ -51,6 +55,10 @@ Game.prototype.startLoop = function(){
         }.bind(this)
     
     document.addEventListener('keydown', this.handleKeyDown);
+
+    this.soundEnemy = new Audio("./sound/NFF-thud.wav");
+    this.soundBox = new Audio("./sound/NFF-explode.wav");
+    this.soundPoint = new Audio("./sound/NFF-yahoo.wav");
 
     var intervalId = setInterval(function () {
         this.level++; 
@@ -163,6 +171,8 @@ Game.prototype.chceckCollisions = function(){
             this.player.lives--;
             this.lostLives(this.player.lives);
             this.obsticles.splice(index, 1);
+            this.soundEnemy.play();
+            this.soundEnemy.volume = 0.5;
         
             if(!this.player.lives){
                 this.gameOver = true;
@@ -174,6 +184,8 @@ Game.prototype.chceckCollisions = function(){
       this.points.forEach(function(point, index){
           if(this.player.collisionWithPoints(point)){
             this.score++;
+            this.soundPoint.play();
+            this.soundPoint.volume = 0.5;
             this.points.splice(index, 1);
             this.pointsGained(this.score);
           }
@@ -181,8 +193,13 @@ Game.prototype.chceckCollisions = function(){
 
      this.box.forEach(function(box, index){
           if(this.player.collisionWithBox(box)){
-            this.gameOver = true;
-            this.finishGame();
+            this.soundBox.play();
+            this.soundBox.volume = 0.5;
+            setTimeout(function () {
+                this.gameOver = true;
+                this.finishGame();;
+            }.bind(this), 100)
+            
           } else {
             console.log('not collision')
             setTimeout(function () {

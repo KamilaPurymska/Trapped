@@ -16,6 +16,7 @@ function buildDOM(html) {
     var restartButton;
     var liveElement;
     var pointsElement;
+    var audioElement;
   
 function buildSplash() {
     splashScreen = buildDOM(`
@@ -23,7 +24,7 @@ function buildSplash() {
         <div class="splash">
             <h1>Trapped</h1>
             <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
-            <button class="start">Start</button>
+            <button class="start">Play</button>
         </div>
     </main>
     `)
@@ -50,7 +51,7 @@ function buildGameScreen(){
             <div class="wrapper">
                 <div class="livesSec">
                     <p class="livesTe">Lives: </p>
-                    <p class="lives">3</p>
+                    <p class="lives">5</p>
                 </div>
                 <div class="pointSec">
                     <p class="pointsTe">Points: </p>
@@ -59,6 +60,7 @@ function buildGameScreen(){
                 <canvas width="640px" height="480px">
                 </canvas>
             </div>
+            <audio class="sound"><source type="audio/mpeg" /></audio>
         </main>
     `)
     document.body.prepend(gameScreen);
@@ -66,6 +68,8 @@ function buildGameScreen(){
     var canvasElement = document.querySelector('canvas');
     liveElement  = document.querySelector('p.lives')
     pointsElement = document.querySelector('p.points')
+    audioElement = document.querySelector('.sound');
+    audioElement.src = './sound/game.mp3';
 
     var game = new Game(canvasElement);
 
@@ -98,7 +102,7 @@ function buildGameOverScreen(){
         <main class="oversplash">
             <div class="over">
                 <h1>Game over</h1>
-                <button>RESTART</button>
+                <button class="over">RESTART</button>
             </div>
         </main>
     `)

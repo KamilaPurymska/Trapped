@@ -5,7 +5,7 @@ function Player(canvasElement, initialPostionPlayer){
     this.y = initialPostionPlayer.y;
     this.size = 100;
     this.speed = 5;
-    this.lives = 10;
+    this.lives = 5;
     this.direction = 0; 
     this.canvasElement = canvasElement;
     this.ctx = this.canvasElement.getContext('2d');
