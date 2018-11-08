@@ -25,8 +25,8 @@ function buildSplash() {
         <div class="splash">
             <h1>Trapped</h1>
             <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
-            <button class="start hvr-shutter-out-horizontal">Play</button>
-            <button class="rules shutter-out-horizontal">Rules</button>
+            <button class="start hvr-shutter-out-horizontal">play</button>
+            <button class="rules shutter-out-horizontal">rules</button>
             <div class="rules hidden">
                 <div class="first-row">
                     <div class="arr-left">
@@ -142,8 +142,8 @@ function buildGameOverScreen(){
     gameOverScreen = buildDOM(`
         <main class="oversplash">
             <div class="over">
-                <h1>Game over</h1>
-                <button class="over">RESTART</button>
+                <h1 class="gameover">Game over</h1>
+                <button class="over hvr-wobble-horizontal">RESTART</button>
             </div>
         </main>
     `)
