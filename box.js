@@ -26,3 +26,4 @@ Box.prototype.update = function(){
 Box.prototype.inCanvas = function(){
     return this.y > -this.size; 
 }   
+

@@ -63,9 +63,97 @@ div.splash, div.over{
       background-color: rgba(255,255,255, 0.01);
       justify-self: center;
       grid-area: canva;
-      
-  
   }
+  .hidden{
+    display: none;
+  }
+
+  div.first-row{
+    display: grid;
+    grid-template-columns: auto 15% 20% 15% auto;
+    grid-template-areas:
+      ". arleft ping arrigt .";
+    margin: 0 auto;
+    width: 30%;
+    padding: 20px 0 0px 0;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background-color: rgba(253, 253, 253, 0.445);
+  }
+
+  
+  .arr-left{
+    grid-area: arleft;
+    align-self: center;
+    justify-self: center;
+  }
+  .rules-ping{
+    grid-area: ping;
+    justify-self: center;
+  }
+  .arr-right{
+    grid-area: arrigt;
+    align-self: center;
+    justify-self: center;
+  }
+
+
+  div.en-point{
+    display: grid;
+    grid-template-columns: auto 20% 20% 10% 20% 15% auto; 
+    grid-template-areas:
+      ". coct poit1 . poit bomb .";
+    margin: 0 auto;
+    width: 30%;
+    padding: 10px 0 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #323648;
+    background-color: rgba(253, 253, 253, 0.445);
+  }
+  .rul-points{
+    grid-area: coct;
+    align-content: center;
+  }
+  .Pluspoint{
+    grid-area: poit1;
+    align-self: center;
+  }
+  .minpoint{
+    grid-area: poit;
+    align-self: center;
+  }
+  .bomb{
+    grid-area: bomb;
+  }
+
+  div.rules-box{
+    display: grid;
+    grid-template-columns: auto 17% 20% 15% auto;
+    grid-template-areas:
+      ". sec img bo .";
+    margin: 0 auto;
+    width: 30%;
+    padding: 10px 0 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #323648;
+    background-color: rgba(253, 253, 253, 0.445);
+  }
+  .dis-box{
+    grid-area: sec;
+    align-self: center;
+    
+  }
+  .box-im-rulws{
+    grid-area: img;
+    align-self: center;
+  }
+  .gameov-box{
+    grid-area: bo;
+    align-self: center;
+    text-align: center;
+  }
+
+
 
  h1{
     font-family: 'Permanent Marker', cursive;
@@ -84,25 +172,116 @@ div.splash, div.over{
     letter-spacing: 0.7rem;
     display:block;
     margin: 0 auto;
-    box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.5);
+    border: 2px solid;
+    border-color: white;
+    background-color: rgba(253, 253, 253, 0.5);
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
   }
 
 
-  .start{
+  .hvr-shutter-out-horizontal {
     align-self: center;
     padding: 15px 80px 15px 80px;
-    font-size: 30px;
+    font-size: 35px;
+    font-weight: bold;
     border: none;
     border-top: 2px solid white;
-    /*border-radius: 15px;*/
-    font-family: 'Montserrat', sans-serif;
+      -webkit-transform: perspective(1px) translateZ(0);
+      transform: perspective(1px) translateZ(0);
+      font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.7rem;
     display:block;
     margin: 0 auto;
     background-color: rgba(253, 253, 253, 0);
     color:white;
-    /*box-shadow: 5px 5px 2px 1px rgba(0, 0, 0, 0.5);*/
-  }
+      
+      -webkit-transition-property: color;
+      transition-property: color;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+    }
+    .hvr-shutter-out-horizontal:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(253, 253, 253, 0.411);
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transform-origin: 50%;
+      transform-origin: 50%;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+    }
+    .hvr-shutter-out-horizontal:hover, .hvr-shutter-out-horizontal:focus, .hvr-shutter-out-horizontal:active {
+      color: white;
+    }
+    .hvr-shutter-out-horizontal:hover:before, .hvr-shutter-out-horizontal:focus:before, .hvr-shutter-out-horizontal:active:before {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+    }
+
+    .shutter-out-horizontal {
+      align-self: center;
+      padding: 15px 80px 15px 80px;
+      font-size: 25px;
+      border: none;
+      border-bottom: 2px solid white;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        font-family: 'Montserrat', sans-serif;
+      letter-spacing: 1.5rem;
+      display:block;
+      margin: 0 auto;
+      background-color: rgba(253, 253, 253, 0);
+      color:white;
+        
+        -webkit-transition-property: color;
+        transition-property: color;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+      }
+      .shutter-out-horizontal:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(253, 253, 253, 0.411);
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: 50%;
+        transform-origin: 50%;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+      }
+      .shutter-out-horizontal:hover, .hvr-shutter-out-horizontal:focus, .hvr-shutter-out-horizontal:active {
+        color: white;
+      }
+      .shutter-out-horizontal:hover:before, .hvr-shutter-out-horizontal:focus:before, .hvr-shutter-out-horizontal:active:before {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+      }
+
+
+
+
+  
   @keyframes jump {
     0%   {
       transform: translate3d(0,0,0) scale3d(1,1,1);}

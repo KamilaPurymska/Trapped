@@ -231,16 +231,16 @@ Game.prototype.checkLevels = function(){
         this.obsticleSpeed = 7;
         this.boxSpeed = 9;
 
-        this.pointsRate = 0.985;
-        this.obsticleRate = 0.982;
+        this.pointsRate = 0.98;
+        this.obsticleRate = 0.972;
         this.boxRate = 0.9975;
     } else if (this.level === 3){
         this.poitsSpeed = 8;
         this.obsticleSpeed = 8;
         this.boxSpeed = 10;
 
-        this.pointsRate = 0.985;
-        this.obsticleRate = 0.98;
+        this.pointsRate = 0.98;
+        this.obsticleRate = 0.969;
         this.boxRate = 0.997;
     } else if (this.level === 4){
         this.poitsSpeed = 10;
@@ -248,15 +248,15 @@ Game.prototype.checkLevels = function(){
         this.boxSpeed = 10;
 
         this.pointsRate = 0.98;
-        this.obsticleRate = 0.97;
+        this.obsticleRate = 0.965;
         this.boxRate = 0.997;
     }else if (this.level === 5){
         this.poitsSpeed = 10;
         this.obsticleSpeed = 8;
         this.boxSpeed = 10;
 
-        this.pointsRate = 0.985;
-        this.obsticleRate = 0.97;
+        this.pointsRate = 0.975;
+        this.obsticleRate = 0.963;
         this.boxRate = 0.997;
 }
 }

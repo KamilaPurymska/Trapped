@@ -16,7 +16,8 @@ function buildDOM(html) {
     var restartButton;
     var liveElement;
     var pointsElement;
-    var audioElement;
+    var instructionButton;
+    
   
 function buildSplash() {
     splashScreen = buildDOM(`
@@ -24,15 +25,56 @@ function buildSplash() {
         <div class="splash">
             <h1>Trapped</h1>
             <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
-            <button class="start">Play</button>
+            <button class="start hvr-shutter-out-horizontal">Play</button>
+            <button class="rules shutter-out-horizontal">Rules</button>
+            <div class="rules hidden">
+                <div class="first-row">
+                    <div class="arr-left">
+                    <i class="fas fa-angle-left"></i>
+                    </div>
+                    <div class="rules-ping">
+                        <img width="50" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
+                    </div>
+                    <div class="arr-right">
+                    <i class="fas fa-angle-right"></i>
+                    </div>
+                </div>
+                <div class="en-point">
+                    <div class="rul-points">
+                        <img class="coct1" width="20" src="./images/cocstail.png" alt="" />
+                        <img class="coct2" width="20" src="./images/coctail2.png" alt="" />
+                        <img class="coct3" width="20" src="./images/coctail3.png" alt="" />
+                    </div>
+                    <p class="Pluspoint">+1 point</p>
+                    <p class="minpoint">-1 point</p>
+                    <img class="bomb" width="40" src="./images/bomb3.png" alt="" />
+                </div>
+                <div class="rules-box">
+                    <p class="dis-box">5 sec.</p>
+                    <img class="box-im-rulws" width="50" src="./images/box.png" alt="" />
+                    <p class="gameov-box">Game over</p>
+                </div>
+            </div>
         </div>
     </main>
     `)
   
     document.body.prepend(splashScreen);
+
+    var hideSection  = function (event){
+        event.stopPropagation();
+        rulesSec.classList.toggle('hidden');
+    }
   
     startButton = document.querySelector('button.start');
     startButton.addEventListener('click', destroySplash);
+    instructionButton = document.querySelector('button.rules');
+    instructionButton.addEventListener('click', hideSection);
+
+    var rulesSec = document.querySelector('div.rules');
+
+
+
 }
 buildSplash();
 
@@ -60,7 +102,7 @@ function buildGameScreen(){
                 <canvas width="640px" height="480px">
                 </canvas>
             </div>
-            <audio class="sound"><source type="audio/mpeg" /></audio>
+            <audio autoplay="autoplay"><source src="./sound/game3.mp3" type="audio/mpeg" /></audio>
         </main>
     `)
     document.body.prepend(gameScreen);
@@ -68,8 +110,7 @@ function buildGameScreen(){
     var canvasElement = document.querySelector('canvas');
     liveElement  = document.querySelector('p.lives')
     pointsElement = document.querySelector('p.points')
-    audioElement = document.querySelector('.sound');
-    audioElement.src = './sound/game.mp3';
+
 
     var game = new Game(canvasElement);
 
@@ -110,6 +151,7 @@ function buildGameOverScreen(){
 
     restartButton = document.querySelector('button')
     restartButton.addEventListener('click', destroyGameOverScreen)
+    
 }
 
 function destroyGameOverScreen(){
@@ -117,6 +159,8 @@ function destroyGameOverScreen(){
     restartButton.removeEventListener('click', destroyGameOverScreen)
     buildGameScreen();
 }
+
+
 
 
 
