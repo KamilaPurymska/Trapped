@@ -23,7 +23,7 @@ function buildSplash() {
     splashScreen = buildDOM(`
     <main class="mainsplash">
         <div class="splash">
-        <h1>Trapped</h1>
+        <h1 class="firstH1">Trapped</h1>
             <div class=startall>
                 <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
                 <button class="start hvr-shutter-out-horizontal">play</button>
