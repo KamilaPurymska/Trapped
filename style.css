@@ -15,7 +15,9 @@ html {
     margin: 0 auto;
   }
 
-
+  ::-webkit-scrollbar { 
+    display: none; 
+}
   h1{
     font-family: 'Permanent Marker', cursive;
     color: white;
@@ -36,7 +38,7 @@ html {
     background-repeat: no-repeat;
     background-position: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .hidden{
@@ -385,7 +387,7 @@ button.over{
     background-size: cover;
     background-position: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     
   }
 
