@@ -22,19 +22,12 @@ function Game(canvasElement){
         x: this.canvasElement.width / 2,
         y: this.canvasElement.height
     }
-    
-        
-    }
+}
 
 
 Game.prototype.start = function () {
 
     this.ctx = this.canvasElement.getContext('2d');
-   
-
-    
-
-
     this.startLoop();
 }
 
@@ -42,9 +35,6 @@ Game.prototype.start = function () {
 Game.prototype.startLoop = function(){
 
     this.player = new Player(this.canvasElement, this.initialPostionPlayer);
-    //this.obsticles.push(new Obsticle(this.canvasElement, this.obsticleSpeed))
-    //this.points.push(new Points(this.canvasElement, this.poitsSpeed))
-    //this.box.push(new Box(this.canvasElement, this.speedBox))
 
     this.handleKeyDown = function (event){
         if (event.key === 'ArrowLeft') {

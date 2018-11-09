@@ -23,36 +23,38 @@ function buildSplash() {
     splashScreen = buildDOM(`
     <main class="mainsplash">
         <div class="splash">
-            <h1>Trapped</h1>
-            <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
-            <button class="start hvr-shutter-out-horizontal">play</button>
-            <button class="rules shutter-out-horizontal">rules</button>
-            <div class="rules hidden">
-                <div class="first-row">
-                    <div class="arr-left">
-                    <i class="fas fa-angle-left"></i>
+        <h1>Trapped</h1>
+            <div class=startall>
+                <img class="penguin" width="100" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
+                <button class="start hvr-shutter-out-horizontal">play</button>
+                <button class="rules shutter-out-horizontal">rules</button>
+                <div class="rules hidden">
+                    <div class="first-row">
+                        <div class="arr-left">
+                        <i class="fas fa-angle-left"></i>
+                        </div>
+                        <div class="rules-ping">
+                            <img width="50" src="./images/penguin.png" alt="" />
+                        </div>
+                        <div class="arr-right">
+                        <i class="fas fa-angle-right"></i>
+                        </div>
                     </div>
-                    <div class="rules-ping">
-                        <img width="50" src="http://www.pngall.com/wp-content/uploads/2016/03/Penguin-PNG-File.png" alt="" />
+                    <div class="en-point">
+                        <div class="rul-points">
+                            <img class="coct1" width="20" src="./images/cocstail.png" alt="" />
+                            <img class="coct2" width="20" src="./images/coctail2.png" alt="" />
+                            <img class="coct3" width="20" src="./images/coctail3.png" alt="" />
+                        </div>
+                        <p class="Pluspoint">+1 point</p>
+                        <p class="minpoint">-1 point</p>
+                        <img class="bomb" width="40" src="./images/bomb3.png" alt="" />
                     </div>
-                    <div class="arr-right">
-                    <i class="fas fa-angle-right"></i>
+                    <div class="rules-box">
+                        <p class="dis-box">5 sec.</p>
+                        <img class="box-im-rulws" width="50" src="./images/box.png" alt="" />
+                        <p class="gameov-box">Game over</p>
                     </div>
-                </div>
-                <div class="en-point">
-                    <div class="rul-points">
-                        <img class="coct1" width="20" src="./images/cocstail.png" alt="" />
-                        <img class="coct2" width="20" src="./images/coctail2.png" alt="" />
-                        <img class="coct3" width="20" src="./images/coctail3.png" alt="" />
-                    </div>
-                    <p class="Pluspoint">+1 point</p>
-                    <p class="minpoint">-1 point</p>
-                    <img class="bomb" width="40" src="./images/bomb3.png" alt="" />
-                </div>
-                <div class="rules-box">
-                    <p class="dis-box">5 sec.</p>
-                    <img class="box-im-rulws" width="50" src="./images/box.png" alt="" />
-                    <p class="gameov-box">Game over</p>
                 </div>
             </div>
         </div>
@@ -159,15 +161,6 @@ function destroyGameOverScreen(){
     restartButton.removeEventListener('click', destroyGameOverScreen)
     buildGameScreen();
 }
-
-
-
-
-
-
-
-
-
 
 }
 

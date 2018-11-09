@@ -18,11 +18,7 @@ function Player(canvasElement, initialPostionPlayer){
     }
 
     Player.prototype.draw = function(){
-        
-        //this.image = document.querySelector('img.playerPenguin').getAttribute('src')
         this.ctx.drawImage(this.image, this.x, this.y - this.size, this.size, this.size);
-        //this.ctx.fillRect(this.x, this.y - this.size / 2, this.size, this.size)
-
     }
 
     Player.prototype.update = function(){
@@ -34,10 +30,7 @@ function Player(canvasElement, initialPostionPlayer){
           }
         this.x += this.speed * this.direction
     }
-
-   /* Player.prototype.move = function(){
-        this.x += this.speed * this.direction
-    } */
+    
 
     Player.prototype.collisionWithObsicles = function(obsticle){
         var collisionTop = obsticle.y + obsticle.size > this.y - this.size;
