@@ -135,7 +135,7 @@ Definition of the different states and their transition (transition functions)
 ### Git
 URls for the project repo and deploy
 [Link Repo](https://github.com/KamilaPurymska/Trapped)
-[Link Deploy](http://github.com)
+[Link Deploy](https://kamilapurymska.github.io/Trapped/)
 
 
 ### Slides
