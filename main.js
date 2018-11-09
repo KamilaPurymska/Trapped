@@ -18,7 +18,7 @@ function buildDOM(html) {
     var pointsElement;
     var instructionButton;
     
-  
+    // indentation
 function buildSplash() {
     splashScreen = buildDOM(`
     <main class="mainsplash">
@@ -76,7 +76,7 @@ function buildSplash() {
     var rulesSec = document.querySelector('div.rules');
 
 
-
+// Spacing 
 }
 buildSplash();
 

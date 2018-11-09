@@ -170,7 +170,7 @@ Game.prototype.chceckCollisions = function(){
             }
         }
       }.bind(this)); 
-
+    // Indentation
       this.points.forEach(function(point, index){
           if(this.player.collisionWithPoints(point)){
             this.score++;
@@ -248,5 +248,6 @@ Game.prototype.checkLevels = function(){
         this.pointsRate = 0.975;
         this.obsticleRate = 0.963;
         this.boxRate = 0.997;
+    // indentation
 }
 }

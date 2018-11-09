@@ -12,7 +12,7 @@ function Player(canvasElement, initialPostionPlayer){
     this.image = new Image();
     this.image.src = './images/penguin.png';
 }
-
+// Indentation
     Player.prototype.setDirection = function(direction){
         this.direction = direction;
     }
