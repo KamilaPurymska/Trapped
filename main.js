@@ -1,25 +1,22 @@
-'use strict'
+'use strict';
 
-function buildDOM(html) {
-    var div = document.createElement('div');
-    div.innerHTML = html;
-    return div.children[0];
-  }
+function buildDOM (html) {
+  var div = document.createElement('div');
+  div.innerHTML = html;
+  return div.children[0];
+}
 
+function main () {
+  var splashScreen;
+  var gameScreen;
+  var startButton;
+  var gameOverScreen;
+  var restartButton;
+  var liveElement;
+  var pointsElement;
+  var instructionButton;
 
-  function main() {
-
-    var splashScreen;
-    var gameScreen;
-    var startButton;
-    var gameOverScreen;
-    var restartButton;
-    var liveElement;
-    var pointsElement;
-    var instructionButton;
-    
-  
-function buildSplash() {
+  function buildSplash () {
     splashScreen = buildDOM(`
     <main class="mainsplash">
         <div class="splash">
@@ -59,37 +56,32 @@ function buildSplash() {
             </div>
         </div>
     </main>
-    `)
-  
+    `);
+
     document.body.prepend(splashScreen);
 
-    var hideSection  = function (event){
-        event.stopPropagation();
-        rulesSec.classList.toggle('hidden');
-    }
-  
+    var hideSection = function (event) {
+      event.stopPropagation();
+      rulesSec.classList.toggle('hidden');
+    };
+
     startButton = document.querySelector('button.start');
     startButton.addEventListener('click', destroySplash);
     instructionButton = document.querySelector('button.rules');
     instructionButton.addEventListener('click', hideSection);
 
     var rulesSec = document.querySelector('div.rules');
+  }
+  buildSplash();
 
-
-
-}
-buildSplash();
-
-
-function destroySplash(){
+  function destroySplash () {
     splashScreen.remove();
     startButton.removeEventListener('click', destroySplash);
-    
+
     buildGameScreen();
-}
+  }
 
-
-function buildGameScreen(){
+  function buildGameScreen () {
     gameScreen = buildDOM(`
         <main>
             <div class="wrapper">
@@ -106,13 +98,12 @@ function buildGameScreen(){
             </div>
             <audio autoplay="autoplay"><source src="./sound/game3.mp3" type="audio/mpeg" /></audio>
         </main>
-    `)
+    `);
     document.body.prepend(gameScreen);
 
     var canvasElement = document.querySelector('canvas');
-    liveElement  = document.querySelector('p.lives')
-    pointsElement = document.querySelector('p.points')
-
+    liveElement = document.querySelector('p.lives');
+    pointsElement = document.querySelector('p.points');
 
     var game = new Game(canvasElement);
 
@@ -122,25 +113,21 @@ function buildGameScreen(){
     game.onLiveLost(updateLives);
     game.onPointsGained(updatePoints);
 
-    function updateLives(lives) {
-        liveElement.innerText = lives;
+    function updateLives (lives) {
+      liveElement.innerText = lives;
     }
 
-    function updatePoints(points){
-        pointsElement.innerText = points;
+    function updatePoints (points) {
+      pointsElement.innerText = points;
     }
+  }
 
-}
-
-
-function destroyGameScreen(){
+  function destroyGameScreen () {
     gameScreen.remove();
     buildGameOverScreen();
-    
-}
+  }
 
-
-function buildGameOverScreen(){
+  function buildGameOverScreen () {
     gameOverScreen = buildDOM(`
         <main class="oversplash">
             <div class="over">
@@ -148,20 +135,18 @@ function buildGameOverScreen(){
                 <button class="over hvr-wobble-horizontal">RESTART</button>
             </div>
         </main>
-    `)
+    `);
     document.body.prepend(gameOverScreen);
 
-    restartButton = document.querySelector('button')
-    restartButton.addEventListener('click', destroyGameOverScreen)
-    
-}
+    restartButton = document.querySelector('button');
+    restartButton.addEventListener('click', destroyGameOverScreen);
+  }
 
-function destroyGameOverScreen(){
+  function destroyGameOverScreen () {
     gameOverScreen.remove();
-    restartButton.removeEventListener('click', destroyGameOverScreen)
+    restartButton.removeEventListener('click', destroyGameOverScreen);
     buildGameScreen();
+  }
 }
 
-}
-
-window.addEventListener('load', main)
+window.addEventListener('load', main);
